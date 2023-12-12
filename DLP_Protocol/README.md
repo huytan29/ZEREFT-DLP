@@ -27,7 +27,5 @@ Step 2: Download WFPExplorer (https://github.com/zodiacon/WFPExplorer/releases/t
 
 Step 3: Build source using Cmake file
 1. cd build
-2. cmake -G "Visual Studio 17" -A x64 ..
+2. cmake ..
 3. cmake --build .
-4. run DLP.exe in folder "build/Debug"
-
