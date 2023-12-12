@@ -12,7 +12,7 @@
  * Version:     1.0.0
  ******************************************************************************/
 
-#include "config.h"
+#include "../../include/connection_module/config.h"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -30,11 +30,11 @@
 #define strncasecmp _strnicmp
 #endif
 
-#include "shared.h"
+#include "../../include/shared.h"
 #include <mosquitto.h>
 #include <mqtt_protocol.h>
-#include "client_shared.h"
-#include "os_xml.h"
+#include "../../include/connection_module/client_shared.h"
+#include "../../include/rwconfig/os_xml.h"
 #ifdef WITH_SOCKS
 static int mosquitto__parse_socks_url(struct mosq_config *cfg, char *url);
 #endif

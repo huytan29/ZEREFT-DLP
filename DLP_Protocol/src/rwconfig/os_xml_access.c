@@ -12,8 +12,8 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "os_xml.h"
-#include "os_xml_internal.h"
+#include "../../include/rwconfig/os_xml.h"
+#include "../../include/rwconfig/os_xml_internal.h"
 
 /* Prototypes */
 static char **_GetElements(const OS_XML *_lxml, const char **element_name, XML_TYPE type) __attribute__((nonnull(1)));

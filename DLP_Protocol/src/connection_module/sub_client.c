@@ -31,8 +31,8 @@
 #include <mqtt_protocol.h>
 #include "client_shared.h"
 #include "sub_client_output.h"
-#include "shared.h" /*for accessing global config & using logging module*/
-#include "os_xml.h"
+#include "../../include/shared.h" /*for accessing global config & using logging module*/
+#include "../../include/rwconfig/os_xml.h"
 /*Global variables*/
 struct mosq_config cfg;
 bool process_messages = true;

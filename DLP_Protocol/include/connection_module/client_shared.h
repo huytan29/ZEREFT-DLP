@@ -53,6 +53,7 @@ struct mosq_config {
 	int protocol_version;
 	int keepalive;
 	char *host;
+	char *cafile;
 	int port;
 	int qos;
 	bool retain;

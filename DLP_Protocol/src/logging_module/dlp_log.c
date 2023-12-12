@@ -3,8 +3,10 @@
  */
 
 
-#include "shared.h"
-#include "cJSON.h"
+#include "../../include/shared.h"
+#include "../../dependencies/CJSON/cJSON.h"
+#include "../../include/dlp_log.h"
+#include "../../include/rwconfig/os_xml.h"
 
 #ifdef WIN32
 #define localtime_r(x, y) localtime_s(y, x)
@@ -240,7 +242,7 @@ void logging_init(){
 }
 
 /*Read config file to set log format to plain or to JSON*/
-void os_logging_config(){
+/*void os_logging_config(){
   OS_XML xml;
   const char * xmlf[] = {"ossec_config", "logging", "log_format", NULL};
   char * logformat;

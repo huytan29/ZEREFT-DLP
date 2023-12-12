@@ -30,7 +30,7 @@
 #define TOPIC "<topic>"
 #define STRINGINSR "<topic>%s</topic>\n"
 #define TMP_DIR "/home/lancs/DataLossPrevention/codebase/Rwconfig"
-#define LASTCONFIG "last-lancs_dlp.conf"
+#define LASTCONFIG "lancs_dlp.conf"
 
 
 /* XML Node structure */
