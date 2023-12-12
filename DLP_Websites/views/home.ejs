@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZESECURE DASHBOARD</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="header">
+        <h1>ZESECURE DASHBOARD</h1>
+    </div>
+    <div class="main-content">
+        <table class="agent-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>OS</th>
+                    <th>TIME</th>
+                </tr>
+            </thead>
+            <tbody id="agent-table-body">
+                <!-- Thẻ tbody để chứa dữ liệu từ MQTT -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mqtt/dist/mqtt.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io(); // Khởi tạo kết nối Socket.io
+        let agentData = {};
+
+        // Nhận dữ liệu từ server thông qua Socket.io
+        socket.on('agentData', function(data) {
+            agentData[data.name] = data; // Lưu dữ liệu mới nhất của agent
+
+            renderAgentData();
+        });
+
+        function renderAgentData() {
+            const tableBody = document.getElementById('agent-table-body');
+            tableBody.innerHTML = ''; // Xóa các dòng hiện tại trong bảng
+
+            let count = 1;
+            Object.keys(agentData).forEach(name => {
+                const data = agentData[name];
+                const newRow = document.createElement('tr');
+                newRow.innerHTML = `
+                    <td>${count}</td>
+                    <td>${data.name}</td>
+                    <td>${data.os}</td>
+                    <td>${data.time ? data.time : ''}</td>
+                `;
+                tableBody.appendChild(newRow);
+                count++;
+            });
+        }
+    </script>
+</body>
+</html>

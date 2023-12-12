@@ -1,0 +1,10 @@
+^F:\ZEREFT29\ZE_SECU\BUILD\CMAKEFILES\2EF36DCE251446532A7306068E65BEA8\GENERATE.STAMP.RULE
+setlocal
+C:\msys64\mingw64\bin\cmake.exe -SF:/Zereft29/ze_secu -BF:/Zereft29/ze_secu/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file F:/Zereft29/ze_secu/build/DLP.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

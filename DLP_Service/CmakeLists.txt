@@ -1,0 +1,50 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(DLP)
+
+set(SOURCES
+    src/headers/blIPaddress/FilterIP.cpp
+    src/headers/blIPaddress/RuleParser.cpp
+    src/feature/blIPaddress.cpp
+    src/feature/blscapture.cpp
+    src/feature/blwebsites.cpp
+    src/feature/killProcess.cpp
+    src/feature/blUSB.cpp
+    src/feature/blEdit.cpp
+    src/feature/main.cpp
+)
+
+# Create the executable target
+add_executable(DLP ${SOURCES})
+
+# Set the C++ standard to 14 (or higher, if desired)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Link necessary libraries with the executable
+target_link_libraries(DLP PRIVATE ws2_32 Fwpuclnt iphlpapi)
+
+# Set the output directory for the executable file to 'config'
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
+
+# Set the Windows SDK version (change this to your desired version)
+set(WINDOWS_SDK_ROOT "E:/Windows Kits/10/")
+
+add_compile_definitions(WINVER=0x0A00 _WIN32_WINNT=0x0A00)
+
+# Add include directories for header files
+target_include_directories(DLP PRIVATE
+    BlScreenlib
+    BlWebsites
+    BlScreenlib/json.hpp
+    blIPaddress
+    "${WINDOWS_SDK_ROOT}Include/${WINDOWS_SDK_VERSION}/um"
+    "${WINDOWS_SDK_ROOT}Include/${WINDOWS_SDK_VERSION}/shared"
+)
+
+# Add library directories for SDK libraries
+link_directories(
+    "${WINDOWS_SDK_ROOT}Lib/${WINDOWS_SDK_VERSION}/um/x64"
+)
+
+target_compile_options(DLP PRIVATE /std:c++latest)

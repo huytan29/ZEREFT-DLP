@@ -1,0 +1,46 @@
+[
+    {
+        "ProcessName": "chrome.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "firefox.exe",
+        "DisableScreenshot": false
+    },
+    {
+        "ProcessName": "Code.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "cmd.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "cpptools.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "conhost.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "WinStoreApp.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "WindowsTerminal.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "OpenConsole.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "RuntimeBroker.exe",
+        "DisableScreenshot": true
+    },
+    {
+        "ProcessName": "Telegram.exe",
+        "DisableScreenshot": true
+    }
+]

@@ -1,0 +1,10 @@
+^F:\ZEREFT29\ZE_SECU\CMAKELISTS.TXT
+setlocal
+C:\msys64\mingw64\bin\cmake.exe -SF:/Zereft29/ze_secu -BF:/Zereft29/ze_secu/build --check-stamp-file F:/Zereft29/ze_secu/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

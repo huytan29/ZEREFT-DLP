@@ -1,0 +1,27 @@
+/* CSS để tùy chỉnh giao diện */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+.main-content {
+    margin: 20px;
+}
+.agent-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+.agent-list th, .agent-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.agent-list th {
+    background-color: #f2f2f2;
+}
