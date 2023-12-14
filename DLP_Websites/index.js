@@ -16,6 +16,10 @@ app.get('/', function(req, res)  {
     res.render('home.ejs');
 });
 
+app.get('/history', function(req, res){
+    res.render('history.ejs');
+})
+
 server.listen(port, () => console.log(`App listening at http://localhost:${port}`));
 
 //------------------------MQTT---------------------------

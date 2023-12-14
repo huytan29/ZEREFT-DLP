@@ -1,0 +1,44 @@
+cmake_minimum_required(VERSION 3.10)
+project(WindowsAgent)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# Tạo biến để lưu đường dẫn đến các thư viện
+set(CONNECTION_MODULE_DIR "F:/Zereft29/lancs-dlp/build/src/connection_module")
+set(LOGGING_MODULE_DIR "F:/Zereft29/lancs-dlp/build/src/logging_module")
+set(RWCONFIG_DIR "F:/Zereft29/lancs-dlp/build/src/rwconfig")
+set(WINSERVICE_DIR "F:/Zereft29/lancs-dlp/build/src/winservice")
+
+# Thêm đường dẫn đến các thư viện
+include_directories(
+    ${CONNECTION_MODULE_DIR}
+    ${LOGGING_MODULE_DIR}
+    ${RWCONFIG_DIR}
+    ${WINSERVICE_DIR}
+)
+
+# Tìm và thêm các file mã nguồn vào target
+add_executable(agent windows_agent.cpp)
+
+# Liên kết các thư viện
+target_link_libraries(agent
+    ${CONNECTION_MODULE_DIR}/libconnection_module.a
+    ${LOGGING_MODULE_DIR}/liblogging_module.a
+    ${RWCONFIG_DIR}/librwconfig.a
+    ${WINSERVICE_DIR}/libwinservice.a
+)
+
+# Tìm và liên kết thư viện Mosquitto
+find_library(MOSQUITTO_LIBRARY mosquitto)
+if(MOSQUITTO_LIBRARY)
+    target_link_libraries(agent ${MOSQUITTO_LIBRARY})
+else()
+    message(FATAL_ERROR "Mosquitto library not found")
+endif()
+
+# Thêm đường dẫn đến thư viện Mosquitto
+include_directories("<path_to_mosquitto_header_files>")
+
+# (Nếu cần) Sao chép file thực thi sang thư mục đích
+# set(EXECUTABLE_OUTPUT_PATH "<path_to_output_folder>")
+# add_custom_command(TARGET agent POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:agent> "<path_to_output_folder>")
