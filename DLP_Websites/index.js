@@ -35,6 +35,14 @@ var options = {
 const client = mqtt.connect(options);
 let lastData = null; // Lưu trữ dữ liệu gần đây
 
+//declare topics
+const topic1 = "killProcess";
+const topic2 = "blockIPAddress";
+const topic3 = "controlScreenshot";
+const topic4 = "blockUSB";
+const topic5 = "blockEdit";
+const topic6 = "blockWebsites";
+
 client.on('connect', function () {
     console.log('Connected to MQTT broker');
     client.subscribe('send_info'); // Đăng ký để nhận các tin nhắn từ topic tương ứng
