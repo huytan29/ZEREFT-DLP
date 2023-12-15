@@ -1,0 +1,80 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(DLP)
+
+set(SOURCES
+    src/headers/blIPaddress/FilterIP.cpp
+    src/headers/blIPaddress/RuleParser.cpp
+    src/feature/blIPaddress.cpp
+    src/feature/blscapture.cpp
+    src/feature/blwebsites.cpp
+    src/feature/killProcess.cpp
+    src/feature/blUSB.cpp
+    src/feature/blEdit.cpp
+    src/feature/main.cpp
+)
+
+# Create the executable target
+add_executable(DLP ${SOURCES})
+
+# Set the C++ standard to 14 (or higher, if desired)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Link necessary libraries with the executable
+target_link_libraries(DLP PRIVATE ws2_32 Fwpuclnt iphlpapi)
+
+# Set the output directory for the executable file to 'config'
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/config")
+
+# Set the Windows SDK version (change this to your desired version)
+set(WINDOWS_SDK_ROOT "E:/Windows Kits/10/")
+
+add_compile_definitions(WINVER=0x0A00 _WIN32_WINNT=0x0A00)
+
+# Add include directories for header files
+target_include_directories(DLP PRIVATE
+    BlScreenlib
+    BlWebsites
+    BlScreenlib/json.hpp
+    blIPaddress
+    "${WINDOWS_SDK_ROOT}Include/${WINDOWS_SDK_VERSION}/um"
+    "${WINDOWS_SDK_ROOT}Include/${WINDOWS_SDK_VERSION}/shared"
+    C:/msys64/mingw64/bin
+)
+
+# Add library directories for SDK libraries
+link_directories(
+    "${WINDOWS_SDK_ROOT}Lib/${WINDOWS_SDK_VERSION}/um/x64"
+)
+
+target_compile_options(DLP PRIVATE /std:c++latest)
+
+# Link mosquitto.exe to the executable
+#target_link_libraries(DLP PRIVATE C:/msys64/mingw64/lib/libmosquitto.dll.a)
+
+ 
+# Tạo biến để lưu đường dẫn đến các thư viện
+set(CONNECTION_MODULE_DIR "F:/Zereft29/lancs-dlp/build/src/connection_module")
+set(LOGGING_MODULE_DIR "F:/Zereft29/lancs-dlp/build/src/logging_module")
+set(RWCONFIG_DIR "F:/Zereft29/lancs-dlp/build/src/rwconfig")
+set(WINSERVICE_DIR "F:/Zereft29/lancs-dlp/build/src/winservice")
+
+# Thêm đường dẫn đến các thư viện
+include_directories(
+    ${CONNECTION_MODULE_DIR}
+    ${LOGGING_MODULE_DIR}
+    ${RWCONFIG_DIR}
+    ${WINSERVICE_DIR}
+)
+
+
+# Liên kết các thư viện
+target_link_libraries(DLP PRIVATE
+    ${CONNECTION_MODULE_DIR}/libconnection_module.a
+    ${LOGGING_MODULE_DIR}/liblogging_module.a
+    ${RWCONFIG_DIR}/librwconfig.a
+    ${WINSERVICE_DIR}/libwinservice.a
+)
+
+target_link_libraries(DLP PRIVATE C:/msys64/mingw64/lib/libmosquitto.dll.a)

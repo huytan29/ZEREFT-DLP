@@ -47,7 +47,7 @@ build cmake_object_order_depends_target_agent: phony || CMakeFiles/agent.dir
 build CMakeFiles/agent.dir/windows_agent.cpp.obj: CXX_COMPILER__agent_unscanned_ F$:/DOAN/DLP_Agent/windows_agent.cpp || cmake_object_order_depends_target_agent
   DEP_FILE = CMakeFiles\agent.dir\windows_agent.cpp.obj.d
   FLAGS = -std=gnu++11
-  INCLUDES = -IF:/Zereft29/lancs-dlp/build/src/connection_module -IF:/Zereft29/lancs-dlp/build/src/logging_module -IF:/Zereft29/lancs-dlp/build/src/rwconfig -IF:/Zereft29/lancs-dlp/build/src/winservice -I"F:/DOAN/DLP_Agent/<path_to_mosquitto_header_files>"
+  INCLUDES = -IF:/Zereft29/lancs-dlp/build/src/connection_module -IF:/Zereft29/lancs-dlp/build/src/logging_module -IF:/Zereft29/lancs-dlp/build/src/rwconfig -IF:/Zereft29/lancs-dlp/build/src/winservice
   OBJECT_DIR = CMakeFiles\agent.dir
   OBJECT_FILE_DIR = CMakeFiles\agent.dir
   TARGET_COMPILE_PDB = CMakeFiles\agent.dir\

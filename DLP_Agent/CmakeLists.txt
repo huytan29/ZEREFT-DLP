@@ -18,7 +18,8 @@ include_directories(
 )
 
 # Tìm và thêm các file mã nguồn vào target
-add_executable(agent windows_agent.cpp)
+add_executable(agent 
+              windows_agent.cpp)
 
 # Liên kết các thư viện
 target_link_libraries(agent
@@ -37,8 +38,8 @@ else()
 endif()
 
 # Thêm đường dẫn đến thư viện Mosquitto
-include_directories("<path_to_mosquitto_header_files>")
+#include_directories("<path_to_mosquitto_header_files>")
 
 # (Nếu cần) Sao chép file thực thi sang thư mục đích
-# set(EXECUTABLE_OUTPUT_PATH "<path_to_output_folder>")
-# add_custom_command(TARGET agent POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:agent> "<path_to_output_folder>")
+#set(EXECUTABLE_OUTPUT_PATH "<path_to_output_folder>")
+#add_custom_command(TARGET agent POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:agent> "<path_to_output_folder>")
