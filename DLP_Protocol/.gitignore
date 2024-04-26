@@ -1,4 +1,0 @@
-#ignore the entire build/ directory
-build/
-#ignore .git
-.vscode
